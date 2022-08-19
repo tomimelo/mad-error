@@ -30,7 +30,8 @@ export class MadError extends Error implements CustomError {
       name: this.name,
       message: this.message,
       status: this.statusCode,
-      ...(!this.isNullish(this.errorCode) && { code: this.errorCode })
+      ...(!this.isNullish(this.errorCode) && { code: this.errorCode }),
+      ...(this.stack && { stack: this.stack })
     }
   }
 
