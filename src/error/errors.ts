@@ -16,6 +16,14 @@ export class BusinessError extends MadError {
   }
 }
 
+export class NotSupportedError extends MadError {
+  public constructor (message: string) {
+    super(message)
+    this.name = 'NotSupportedError'
+    this.code('NOT_SUPPORTED')
+  }
+}
+
 export class BadRequestError extends MadError {
   public constructor (message: string) {
     super(message)
