@@ -27,15 +27,21 @@ describe(MadError.name, () => {
       const { code } = madError.toJSON()
       expect(code).to.equal(undefined)
     })
+
+    it('should set default data to undefined', () => {
+      const { data } = madError.toJSON()
+      expect(data).to.equal(undefined)
+    })
   })
 
   describe('when converting to JSON', () => {
     it("should return the error object with it's properties", () => {
-      const { name, message, status, code } = madError.toJSON()
+      const { name, message, status, code, data } = madError.toJSON()
       expect(name).to.equal('MadError')
       expect(message).to.equal(errorMessage)
       expect(status).to.equal(500)
       expect(code).to.equal(undefined)
+      expect(data).to.equal(undefined)
     })
   })
 
@@ -63,6 +69,22 @@ describe(MadError.name, () => {
 
     it('should return the MadError', () => {
       expect(madError.code(errorCode)).to.be.instanceOf(MadError)
+    })
+  })
+
+  describe('when setting the error data', () => {
+    const errorData = {
+      reason: 'invalid field'
+    }
+
+    it('should set the error code', () => {
+      madError.data(errorData)
+      const { data } = madError.toJSON()
+      expect(data).to.equal(errorData)
+    })
+
+    it('should return the MadError', () => {
+      expect(madError.data(errorData)).to.be.instanceOf(MadError)
     })
   })
 })

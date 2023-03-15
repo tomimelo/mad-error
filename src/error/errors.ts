@@ -1,52 +1,58 @@
 import { MadError } from './mad-error/mad-error'
 
-export class ValidationError extends MadError {
-  public constructor (message: string) {
+export class ValidationError<DATA = unknown> extends MadError {
+  public constructor (message: string, data?: DATA) {
     super(message)
     this.name = 'ValidationError'
     this.code('INVALID_DATA')
+    this.data(data)
   }
 }
 
-export class BusinessError extends MadError {
-  public constructor (message: string) {
+export class BusinessError<DATA = unknown> extends MadError {
+  public constructor (message: string, data?: DATA) {
     super(message)
     this.name = 'BusinessError'
     this.code('BUSINESS_ERROR')
+    this.data(data)
   }
 }
 
-export class NotSupportedError extends MadError {
-  public constructor (message: string) {
+export class NotSupportedError<DATA = unknown> extends MadError {
+  public constructor (message: string, data?: DATA) {
     super(message)
     this.name = 'NotSupportedError'
     this.code('NOT_SUPPORTED')
+    this.data(data)
   }
 }
 
-export class BadRequestError extends MadError {
-  public constructor (message: string) {
+export class BadRequestError<DATA = unknown> extends MadError {
+  public constructor (message: string, data?: DATA) {
     super(message)
     this.name = 'BadRequestError'
     this.code('BAD_REQUEST')
+    this.data(data)
     this.status(400)
   }
 }
 
-export class UnauthorizedError extends MadError {
-  public constructor (message: string) {
+export class UnauthorizedError<DATA = unknown> extends MadError {
+  public constructor (message: string, data?: DATA) {
     super(message)
     this.name = 'UnauthorizedError'
     this.code('UNAUTHORIZED')
+    this.data(data)
     this.status(401)
   }
 }
 
-export class NotFoundError extends MadError {
-  public constructor (message: string) {
+export class NotFoundError<DATA = unknown> extends MadError {
+  public constructor (message: string, data?: DATA) {
     super(message)
     this.name = 'NotFoundError'
     this.code('NOT_FOUND')
+    this.data(data)
     this.status(404)
   }
 }
