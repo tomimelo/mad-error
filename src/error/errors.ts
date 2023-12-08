@@ -47,6 +47,16 @@ export class UnauthorizedError<DATA = unknown> extends MadError {
   }
 }
 
+export class UnauthenticatedError<DATA = unknown> extends MadError {
+  public constructor (message: string, data?: DATA) {
+    super(message)
+    this.name = 'UnauthenticatedError'
+    this.code('UNAUTHENTICATED')
+    this.data(data)
+    this.status(401)
+  }
+}
+
 export class NotFoundError<DATA = unknown> extends MadError {
   public constructor (message: string, data?: DATA) {
     super(message)
