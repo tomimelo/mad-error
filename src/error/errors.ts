@@ -43,7 +43,7 @@ export class UnauthorizedError<DATA = unknown> extends MadError {
     this.name = 'UnauthorizedError'
     this.code('UNAUTHORIZED')
     this.data(data)
-    this.status(401)
+    this.status(403)
   }
 }
 
